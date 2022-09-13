@@ -4,13 +4,13 @@
   <title>Snake</title>
   <style>
   html, body {
-    height: 100%;
+    height: 150%;
     margin: 10px;
+    overflow: hidden;
   }
   p {
-    padding-top: 5vh;
     text-align: center;
-    margin: 500px;
+    max-width: 1080px;
   }
   body {
     background: black;
@@ -20,19 +20,14 @@
   }
   canvas {
     border: 1px solid white;
-    position: absolute;
-    padding-left: 0;
-    padding-right: 0;
     margin-left: auto;
     margin-right: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    left: 40%;
     display: block;
   }
   </style>
 </head>
+<div class="parent">
 <body>
 <canvas width="400" height="400" id="game"></canvas>
 <script>
@@ -178,8 +173,11 @@ document.addEventListener('keydown', function(e) {
 // start the game
 requestAnimationFrame(loop);
 </script>
+<div class="child">
 <p style="font-size:30px; color:white;">This is snake game where you can play snake I put it together with my hands and my computer and my brain. 
   Use the arrow keys, you moron. 
   If you don't have access to arrow keys then you have a much bigger problem on your hands.</p>
+</div>
 </body>
+</div>
 </html>
