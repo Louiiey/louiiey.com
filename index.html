@@ -2,10 +2,19 @@
 <html>
 <meta charset="UTF-8">
 	<style>
+	@media all and (orientation: portrait) {
+		#div background-size {cover}
+	}
+
+	@media all and (orientation: portrait) {
+		#div background-size {auto 100%}
+	}
+
 	body {
 		background-image: url('unknown.png');
-		background-size: cover;
+	
 		background-repeat: no-repeat;
+		background-position: right top;
 	}
 
 	p {
