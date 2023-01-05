@@ -1,58 +1,36 @@
-<!DOCTYPE html>
 <html>
-<meta charset="UTF-8">
-	<style>
-	@media all and (orientation: portrait) {
-		#div background-size {cover}
-	}
+  <head>
+    <style>
+      /* Add some style to the website */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+		background-color: #BD8AF1; /* Light pastel pink color */
+      }
 
-	@media all and (orientation: portrait) {
-		#div background-size {auto 100%}
-	}
+      /* Style the image */
+      img {
+        width: 300px;
+        height: 300px;
+        animation: spin 60s linear infinite;
+      }
 
-	body {
-		background-image: url('unknown.png');
-		background-repeat: no-repeat;
-		background-position: right top;
-	}
-
-	p {
-		text-align: center;
-		margin-bottom: 30px;
-	}
-
-	button {
-		position: relative;
-		display: flex;
-		margin-left: auto;
-		margin-right: auto;
-
-	}
-	.button1 { 
-		position: relative;
-		display: flex;
-		margin-left: auto;
-		margin-right: auto;
-		padding-top: 20%;
-	}
-
-	.button2 {
-		padding-top: 3%;
-	}
-	</style>
-	<head>
-		<title>louiiey.com</title>
-	</head>
-	<body>
-		<div class="button1">
-		<button style="font-size:50px">
-			<a href="snake.html">The Game</a>
-		</button>
-		</div>
-		<div class="button2">
-		<button style="font-size:50px">
-			<a href="credits.html">Credits</a>
-		</button>
-		<div></div>
-	</body>
+      /* Add the animation for the image */
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add the image -->
+    <img src="https://media.discordapp.net/attachments/678619866940309514/1060694169946947755/Screenshot_20230105_215934_com.whatsapp.png" alt="Placeholder image">
+  </body>
 </html>
