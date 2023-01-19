@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+  <title>-=@=- Louie Test</title>
+  <link rel="icon" type="image/png" href="C:\Users\LouieJohnston\OneDrive - Bespoke IT Solutions Ltd\Desktop\Testing\pp.png">
+  <style>
+	body {
+		background-image: url('background-image.pn');
+		background-color: #BD8AF1;
+		font-size: 20px;
+		margin-left: 41%;
+	}
+	.form-box {
+		width: 90%;
+		max-width: 450px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		background: #efefef;
+		padding: 40px 30px 70px;
+		text-align: center;
+		border: 2px solid #000;
+		border-radius: 50px;
+	}
+	.box {
+		width: 250px;
+		border: 1px solid #999999;
+		padding: 5px;
+		border-radius: 50px;
+	}
+	.button {
+		position: relative;
+		left: 85px;
+		border: 1px solid #000;
+		border-radius: 50px;
+	}
+	.slider {
+		width: 250px;
+	}
+</style>
+</head>
+  <script>
+    function updateOptions(select1) {
+      // Get the value of the first select box
+      var firstValue = select1.value;
+
+      // Get the second select box
+      var select2 = document.getElementById("roomNum");
+
+      // Clear the options of the second select box
+      select2.innerHTML = "";
+
+      // Based on the value of the first select box, add new options to the second select box
+      if (firstValue === "bits_office") {
+        var option = document.createElement("option");
+        option.text = "Meeting Room 5C";
+        select2.add(option);
+        var option = document.createElement("option");
+        option.text = "The Sofas";
+        select2.add(option);
+      } else if (firstValue === "the_moon") {
+        var option = document.createElement("option");
+        option.text = "The Moon Landing";
+        select2.add(option);
+        var option = document.createElement("option");
+        option.text = "The Dark Side";
+        select2.add(option);
+      }
+    }
+  </script>
+<body>
+<div class="form-box">
+<p>Room Selection Forum:</p><br>
+  <form action="#" method="post">
+    <label for="roomLoca">Room Location:</label><br>
+    <select class="box" id="roomLoca" name="roomLoca" onchange="updateOptions(this)">
+		<option value="default">--*--</option>
+		<option value="bits_office">Bespoke IT Solutions Office</option>
+		<option value="the_moon">The Moon</option>
+    </select><br><br>
+    <label for="roomNum">Room:</label><br>
+    <select class="box" id="roomNum" name="roomNum">
+    </select><br><br>
+	<label for="slider">Number of People Attending:</label><br>
+    <input class="slider" type="range" min="1" max="9" value="5" class="slider" id="slider"><br><br>
+    <button class="button" type="submit">Submit</button>
+  </form> 
+</div>
+  <script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const select1 = document.querySelector('#roomLoca');
+      const selectedValue1 = select1.options[select1.selectedIndex].value;
+      const select2 = document.querySelector('#roomNum');
+      const selectedValue2 = select2.options[select2.selectedIndex].value;
+	  const slider = document.querySelector('#slider');
+      const selectedValue3 = slider.value;
+
+      // Send the selected values as a POST request to the webhook
+      fetch('https://prod-19.uksouth.logic.azure.com:443/workflows/a2edf059f73e4f0d945d7cc231f83b9d/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=r8OvROhLUs-pme7cl6OGLLRKP-v3UW19WeITE4A-Ij8', {
+        method: 'POST',
+        body: JSON.stringify({ roomLoca: selectedValue1, roomNum: selectedValue2, numPpl: selectedValue3 }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => console.log('Success:', response))
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
