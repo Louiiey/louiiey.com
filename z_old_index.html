@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <style>
+      /* Add some style to the website */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+		background-color: #BD8AF1; /* Light pastel pink color */
+      }
+
+      /* Style the image */
+      img {
+        width: 300px;
+        height: 300px;
+        animation: spin 60s linear infinite;
+      }
+
+      /* Add the animation for the image */
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+	  #div1 {
+		padding: 10px;
+		width: 300px;
+		height: 300px;
+		border:5px solid #ffffff;
+		}
+    </style>
+  </head>
+  <script>
+  function allowDrop(ev) {
+  ev.preventDefault();
+  }
+  
+  function drag(ev) {
+  ev.dataTransfer.setData("Text", ev.target.id);
+  }
+  
+  function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("Text");
+  ev.target.appendChild(document.getElementById(data));
+  }
+  
+  </script>
+  <body>
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    
+	</div>
+	<img id="drag1" draggable="true" ondragstart="drag(event)" src="https://media.discordapp.net/attachments/678619866940309514/1060694169946947755/Screenshot_20230105_215934_com.whatsapp.png" alt="Placeholder image">
+  </body>
+</html>
